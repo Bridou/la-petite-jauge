@@ -1,0 +1,12 @@
+services:
+  carnet-essence:
+    build: .
+    ports:
+      - "${PORT:-8082}:8000"
+    volumes:
+      - type: bind
+        source: ./carnet_essence.db
+        target: /data/carnet_essence.db
+        bind:
+          create_host_path: false
+    restart: unless-stopped
